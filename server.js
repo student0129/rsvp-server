@@ -38,6 +38,14 @@ transporter.verify((error, success) => {
   }
 });
 
+// Health check endpoint
+app.get('/', (req, res) => {
+    res.json({ 
+        status: 'Edge Cases Server is running',
+        timestamp: new Date().toISOString()
+    });
+});
+
 // RSVP endpoint with enhanced error handling
 app.post('/rsvp', async (req, res) => {
   console.log('📧 RSVP request received:', req.body);
